@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🪔 Diwali Galaxy Wishes — “Light Up Someone’s Universe”
 
 A premium, interactive, mobile-first Diwali greeting web application combining a magical cosmic galaxy, glowing golden diyas, sacred Vedic blessings, interactive sky lanterns, rangoli art, and personalized greetings that can be shared across the universe.
@@ -110,3 +111,6 @@ Output generated in `dist/`.
 
 ## 📜 License
 Created with devotion for Diwali celebrations. Free to use and share across the universe. Shubh Deepavali!
+=======
+# Diwali-2026
+>>>>>>> 3d8ce591850397a65d577f4507cd4b92ab18bb09
