@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cosmic-midnight: #080F27;
+    --nebula-blue: #172957;
+    --diya-gold: #F7C85B;
+    --warm-ivory: #FFF1D0;
+    --celestial-lavender: #B9B8FF;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #080F27;
+    color: #FFF1D0;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  body {
+    background: radial-gradient(circle at 50% 20%, #172957 0%, #080F27 75%, #050918 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom festive glassmorphism */
+.glass-panel {
+  background: rgba(13, 24, 60, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(247, 200, 91, 0.22);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-panel-gold {
+  background: linear-gradient(135deg, rgba(247, 200, 91, 0.08) 0%, rgba(13, 24, 60, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(247, 200, 91, 0.35);
+  box-shadow: 0 10px 30px rgba(247, 200, 91, 0.12);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF1D0 0%, #F7C85B 50%, #FFA439 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cosmic-gradient-text {
+  background: linear-gradient(135deg, #FFF1D0 0%, #B9B8FF 50%, #F7C85B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Diya Flame Pulsing & Flicker */
+@keyframes flame-flutter {
+  0%, 100% {
+    transform: scale(1) translate(0, 0) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 12px #F7C85B) drop-shadow(0 0 24px #FF7A00);
+  }
+  25% {
+    transform: scale(1.04, 0.96) translate(-1px, -2px) rotate(1.5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 16px #F7C85B) drop-shadow(0 0 32px #FF8C00);
+  }
+  50% {
+    transform: scale(0.96, 1.05) translate(1px, -1px) rotate(-1.5deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 10px #F7C85B) drop-shadow(0 0 20px #FF5500);
+  }
+  75% {
+    transform: scale(1.02, 0.98) translate(-1px, 1px) rotate(1deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 14px #F7C85B) drop-shadow(0 0 28px #FF7A00);
+  }
+}
+
+.diya-flame-anim {
+  animation: flame-flutter 2.6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .diya-flame-anim {
+    animation: none !important;
+  }
+}
+
+/* Custom scrollbar for galaxy feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080F27;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(247, 200, 91, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(247, 200, 91, 0.45);
+}

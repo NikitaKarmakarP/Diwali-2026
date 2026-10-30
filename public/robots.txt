@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://diwali-galaxy-wishes.web.app/sitemap.xml
