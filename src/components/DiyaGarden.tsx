@@ -118,7 +118,10 @@ export const DiyaGarden: React.FC = () => {
 
   return (
     <section id="light-diya" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-      {/* Background radial glow */}
+      {/* Enchanted cosmic swirl background */
+        <>{/* Enchanted swirl background */}
+          <div className="w-96 h-96 bg-gradient-to-r from-galaxy-amber/30 via-galaxy-gold/20 to-galaxy-amber/30 rounded-full blur-3xl animate-pulse-slow" />
+        </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-galaxy-gold/5 rounded-full filter blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
