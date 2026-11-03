@@ -31,12 +31,54 @@ export default {
         'gold-border': '0 0 15px rgba(247, 200, 91, 0.35)',
       },
       animation: {
+        'lantern-rise': 'lanternRise 8s ease-out forwards',
+        'bg-shift': 'bgShift 12s infinite alternate ease-in-out',
         'flicker': 'flicker 2.5s ease-in-out infinite alternate',
         'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
         'float-slow': 'floatSlow 6s ease-in-out infinite',
-        'spin-slow': 'spin 40s linear infinite',
+        'fade-in': 'fadeIn 0.8s ease-out forwards',
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        lanternRise: {
+          '0%': { transform: 'translateY(0)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '100%': { transform: 'translateY(-120vh)', opacity: '0' },
+        },
+        bgShift: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        flicker: {
+          '0%, 100%': { transform: 'scale(1) rotate(-1deg)', opacity: '0.95' },
+          '25%': { transform: 'scale(1.05, 0.95) rotate(1deg)', opacity: '1' },
+          '50%': { transform: 'scale(0.96, 1.04) rotate(-0.5deg)', opacity: '0.9' },
+          '75%': { transform: 'scale(1.02, 0.98) rotate(1.5deg)', opacity: '1' },
+        },
+        pulseGlow: {
+          '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+          '50%': { opacity: '0.9', transform: 'scale(1.08)' },
+        },
+        floatSlow: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-12px)' },
+        },
+
+        lanternRise: {
+          '0%': { transform: 'translateY(0)', opacity: '0' },
+          '10%': { opacity: '1' },
+          '100%': { transform: 'translateY(-120vh)', opacity: '0' },
+        },
+        bgShift: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+
         flicker: {
           '0%, 100%': { transform: 'scale(1) rotate(-1deg)', opacity: '0.95' },
           '25%': { transform: 'scale(1.05, 0.95) rotate(1deg)', opacity: '1' },

@@ -118,12 +118,16 @@ export const DiyaGarden: React.FC = () => {
 
   return (
     <section id="light-diya" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-      {/* Enchanted cosmic swirl background */
-        <>{/* Enchanted swirl background */}
-          <div className="w-96 h-96 bg-gradient-to-r from-galaxy-amber/30 via-galaxy-gold/20 to-galaxy-amber/30 rounded-full blur-3xl animate-pulse-slow" />
-        </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-galaxy-gold/5 rounded-full filter blur-[120px] pointer-events-none" />
+     {/* Enchanted cosmic swirl background */}
+<>
+  <div className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none">
+    <div className="w-96 h-96 bg-gradient-to-r from-galaxy-amber/30 via-galaxy-gold/20 to-galaxy-amber/30 rounded-full blur-3xl animate-pulse-slow" />
+  </div>
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-galaxy-gold/5 rounded-full filter blur-[120px] pointer-events-none" />
+</>
 
+      {/* Sky Lantern */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-yellow-300 rounded-full opacity-80 animate-bounce" />
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">

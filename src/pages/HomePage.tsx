@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HeroSection } from '../components/HeroSection';
+import { DeityGallery } from '../components/DeityGallery';
 import { WishForm } from '../components/WishForm';
 import { DiyaGarden } from '../components/DiyaGarden';
 import { SkyLanternSanctuary } from '../components/SkyLanternSanctuary';
@@ -37,7 +38,12 @@ export const HomePage: React.FC = () => {
 
       </div>
 
-      {/* 2. Interactive Diya Garden */}
+
+
+      {/* Divine Gallery */}
+        <DeityGallery />
+
+        {/* 2. Interactive Diya Garden */}
       <DiyaGarden />
 
       {/* 3. Create Your Wish Studio Section */}
@@ -45,6 +51,8 @@ export const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <WishForm />
         </div>
+
+
       </section>
 
       {/* 4. Interactive Pataka (Firecracker) Simulator */}
@@ -65,5 +73,7 @@ export const HomePage: React.FC = () => {
       {/* 9. Fireworks Celebration */}
       <FireworksCelebration />
     </div>
+
+
   );
 };
