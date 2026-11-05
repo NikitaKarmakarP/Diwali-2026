@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles, Flame, ArrowRight } from 'lucide-react';
+import { Sparkles, Flame, ArrowRight, Star, Heart, CheckCircle2 } from 'lucide-react';
+import confetti from 'canvas-confetti';
+import { soundEngine } from '../utils/soundEffects';
 
 export const HeroSection: React.FC = () => {
   const containerVariants = {
@@ -9,14 +11,14 @@ export const HeroSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.18,
+        staggerChildren: 0.16,
         delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 22 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
@@ -24,11 +26,49 @@ export const HeroSection: React.FC = () => {
     },
   };
 
+  const handleHeroDiyaClick = (e: React.MouseEvent) => {
+    soundEngine.playDiyaLightSound();
+    try {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = (rect.left + rect.width / 2) / window.innerWidth;
+      const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+      confetti({
+        particleCount: 45,
+        spread: 75,
+        origin: { x, y },
+        colors: ['#F7C85B', '#FFA439', '#FFF1D0', '#FF8C00', '#B9B8FF'],
+        disableForReducedMotion: true,
+      });
+    } catch {
+      // ignore
+    }
+  };
+
   return (
-    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-20 overflow-hidden">
-      {/* Background ambient radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[580px] h-[340px] sm:h-[580px] bg-galaxy-nebula/40 rounded-full filter blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] sm:w-[380px] h-[220px] sm:h-[380px] bg-galaxy-gold/20 rounded-full filter blur-[80px] pointer-events-none" />
+    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 sm:py-24 overflow-hidden">
+      {/* Background Cosmic Aurora Radial Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] sm:w-[750px] h-[420px] sm:h-[750px] bg-gradient-to-r from-galaxy-nebula/35 via-galaxy-gold/20 to-galaxy-amber/25 rounded-full filter blur-[140px] pointer-events-none -z-10 animate-pulse-slow" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[480px] h-[280px] sm:h-[480px] bg-galaxy-gold/25 rounded-full filter blur-[90px] pointer-events-none -z-10" />
+
+      {/* Floating Animated Starlight Embers */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
+        <motion.div
+          animate={{ y: [0, -110], opacity: [0, 0.8, 0], x: [0, 20] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeOut' }}
+          className="absolute bottom-24 left-[18%] w-2 h-2 rounded-full bg-galaxy-gold blur-[0.5px]"
+        />
+        <motion.div
+          animate={{ y: [0, -140], opacity: [0, 0.9, 0], x: [0, -25] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeOut', delay: 2.2 }}
+          className="absolute bottom-28 right-[22%] w-2.5 h-2.5 rounded-full bg-galaxy-amber blur-[0.5px]"
+        />
+        <motion.div
+          animate={{ y: [0, -90], opacity: [0, 0.6, 0] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeOut', delay: 4 }}
+          className="absolute bottom-16 left-[50%] w-1.5 h-1.5 rounded-full bg-yellow-200 blur-[0.5px]"
+        />
+      </div>
 
       <div className="max-w-5xl mx-auto w-full flex flex-col items-center text-center relative z-10">
         <motion.div
@@ -37,46 +77,70 @@ export const HeroSection: React.FC = () => {
           animate="visible"
           className="flex flex-col items-center w-full"
         >
-          {/* Central Visual: Luminous Mandala + Grand Golden Diya */}
+          {/* Central Visual: Luminous Sacred Lotus Mandala + Grand Golden Diya */}
           <motion.div variants={itemVariants} className="relative mb-8 sm:mb-12">
             {/* Pulsing Aura Halo */}
-            <div className="absolute inset-0 -m-8 sm:-m-14 rounded-full bg-gradient-to-r from-galaxy-gold/25 via-galaxy-amber/20 to-transparent filter blur-2xl animate-pulse-glow" />
+            <div className="absolute inset-0 -m-10 sm:-m-16 rounded-full bg-gradient-to-r from-galaxy-gold/30 via-galaxy-amber/25 to-transparent filter blur-3xl animate-pulse-glow" />
 
             {/* Rotating Sacred Lotus Mandala */}
-            <div className="relative w-44 h-44 sm:w-64 sm:h-64 flex items-center justify-center">
+            <div
+              onClick={handleHeroDiyaClick}
+              className="relative w-48 h-48 sm:w-72 sm:h-72 flex items-center justify-center cursor-pointer group"
+              title="Click the Sacred Diya to illuminate celestial blessings!"
+            >
+              {/* Outer Counter-Rotating Geometric Star Mandala */}
               <svg
                 viewBox="0 0 200 200"
-                className="w-full h-full text-galaxy-gold/30 animate-spin-slow select-none pointer-events-none drop-shadow-[0_0_12px_rgba(247,200,91,0.25)]"
+                className="absolute inset-0 w-full h-full text-galaxy-gold/20 select-none pointer-events-none drop-shadow-[0_0_15px_rgba(247,200,91,0.3)] animate-spin-slow"
+                style={{ animationDirection: 'reverse', animationDuration: '60s' }}
                 fill="none"
               >
-                {/* 12-petal sacred lotus mandala */}
-                <circle cx="100" cy="100" r="92" stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 3" />
-                <circle cx="100" cy="100" r="82" stroke="currentColor" strokeWidth="1" />
-                <circle cx="100" cy="100" r="70" stroke="currentColor" strokeWidth="0.5" />
+                <circle cx="100" cy="100" r="95" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 4" />
+                <circle cx="100" cy="100" r="86" stroke="currentColor" strokeWidth="1" />
+                {Array.from({ length: 16 }).map((_, i) => (
+                  <circle
+                    key={i}
+                    cx={100 + 86 * Math.cos((i * 2 * Math.PI) / 16)}
+                    cy={100 + 86 * Math.sin((i * 2 * Math.PI) / 16)}
+                    r="2"
+                    fill="#F7C85B"
+                    opacity="0.8"
+                  />
+                ))}
+              </svg>
+
+              {/* Inner 12-Petal Sacred Lotus Mandala */}
+              <svg
+                viewBox="0 0 200 200"
+                className="w-full h-full text-galaxy-gold/35 animate-spin-slow select-none pointer-events-none drop-shadow-[0_0_20px_rgba(247,200,91,0.35)]"
+                fill="none"
+              >
+                <circle cx="100" cy="100" r="74" stroke="currentColor" strokeWidth="0.75" />
+                <circle cx="100" cy="100" r="62" stroke="currentColor" strokeWidth="0.5" />
                 {Array.from({ length: 12 }).map((_, i) => {
                   const angle = (i * 360) / 12;
                   return (
                     <g key={i} transform={`rotate(${angle} 100 100)`}>
                       <path
-                        d="M100 20 C108 50 115 70 100 90 C85 70 92 50 100 20 Z"
+                        d="M100 22 C108 50 115 68 100 88 C85 68 92 50 100 22 Z"
                         fill="currentColor"
-                        fillOpacity="0.12"
+                        fillOpacity="0.14"
                         stroke="currentColor"
-                        strokeWidth="0.8"
+                        strokeWidth="0.85"
                       />
-                      <circle cx="100" cy="24" r="2.5" fill="#F7C85B" />
+                      <circle cx="100" cy="25" r="2.5" fill="#F7C85B" />
                     </g>
                   );
                 })}
               </svg>
 
-              {/* The Hero Golden Diya */}
+              {/* The Hero Golden Diya Vessel & Sacred Dancing Flame */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-28 h-28 sm:w-40 sm:h-40 flex items-center justify-center">
+                <div className="relative w-32 h-32 sm:w-44 sm:h-44 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
                   {/* Concentric Diya Light Burst */}
-                  <div className="absolute w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-gradient-to-r from-galaxy-gold via-galaxy-amber to-amber-600 opacity-40 filter blur-xl animate-pulse" />
+                  <div className="absolute w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-r from-galaxy-gold via-galaxy-amber to-amber-600 opacity-60 filter blur-xl animate-pulse" />
 
-                  <svg viewBox="0 0 160 160" className="w-full h-full drop-shadow-[0_0_25px_rgba(247,200,91,0.7)]">
+                  <svg viewBox="0 0 160 160" className="w-full h-full drop-shadow-[0_0_30px_rgba(247,200,91,0.85)]">
                     <defs>
                       <radialGradient id="heroFlameGrad" cx="50%" cy="80%" r="65%">
                         <stop offset="0%" stopColor="#FFFFFF" />
@@ -104,13 +168,13 @@ export const HeroSection: React.FC = () => {
                       <path
                         d="M80 18 C70 38 66 54 80 72 C94 54 90 38 80 18 Z"
                         fill="url(#heroFlameGrad)"
-                        filter="drop-shadow(0 0 10px #F7C85B)"
+                        filter="drop-shadow(0 0 12px #F7C85B)"
                       />
                       {/* Inner White-hot Flame Core */}
                       <path
                         d="M80 34 C74 46 72 56 80 68 C88 56 86 46 80 34 Z"
                         fill="#FFFFFF"
-                        opacity="0.9"
+                        opacity="0.95"
                       />
                       <circle cx="80" cy="58" r="5" fill="#FFF8E7" />
                     </g>
@@ -154,28 +218,33 @@ export const HeroSection: React.FC = () => {
 
           {/* Subtitle Badge */}
           <motion.div variants={itemVariants} className="mb-4">
-            <span className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-galaxy-gold/10 border border-galaxy-gold/30 text-galaxy-gold text-xs sm:text-sm font-medium tracking-wider uppercase backdrop-blur-sm">
+            <span className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-galaxy-gold/15 border border-galaxy-gold/40 text-galaxy-gold text-xs sm:text-sm font-semibold tracking-wider uppercase backdrop-blur-md shadow-[0_0_20px_rgba(247,200,91,0.25)]">
               <Sparkles className="w-3.5 h-3.5 text-galaxy-gold animate-spin-slow" />
-              <span>Cosmic Diwali Experience</span>
+              <span>✦ ॐ दीपज्योतिषे नमः ✦ Cosmic Diwali Experience</span>
+              <Sparkles className="w-3.5 h-3.5 text-galaxy-gold animate-spin-slow" />
             </span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1
             variants={itemVariants}
-            className="font-serif font-black text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.1] mb-6 max-w-4xl"
+            className="font-serif font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.1] mb-6 max-w-4xl"
           >
-            <span className="gold-gradient-text">Light Up</span>{' '}
+            <span className="gold-gradient-text drop-shadow-[0_4px_28px_rgba(247,200,91,0.4)]">
+              Light Up
+            </span>{' '}
             <span className="text-galaxy-ivory">Someone’s</span>{' '}
-            <span className="cosmic-gradient-text">Universe.</span>
+            <span className="cosmic-gradient-text drop-shadow-[0_4px_28px_rgba(185,184,255,0.4)]">
+              Universe.
+            </span>
           </motion.h1>
 
           {/* Supporting Text */}
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-xl text-galaxy-ivory/80 max-w-2xl leading-relaxed mb-8 sm:mb-10 font-sans"
+            className="text-base sm:text-xl text-galaxy-ivory/85 max-w-2xl leading-relaxed mb-8 sm:mb-10 font-sans"
           >
-            Turn your Diwali wishes into a little piece of magic. Send a glowing cosmic envelope,
+            Turn your Diwali wishes into a little piece of cosmic magic. Send a glowing celestial envelope,
             light interactive diyas in the starlight, and illuminate hearts across the universe.
           </motion.p>
 
@@ -187,39 +256,39 @@ export const HeroSection: React.FC = () => {
             {/* Primary CTA */}
             <Link
               to="/create"
-              className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 px-8 py-4 rounded-full bg-gradient-to-r from-galaxy-gold via-galaxy-amber to-amber-500 text-galaxy-midnight font-bold text-base shadow-[0_0_25px_rgba(247,200,91,0.45)] hover:shadow-[0_0_40px_rgba(247,200,91,0.7)] hover:scale-105 active:scale-95 transition-all outline-none focus-visible:ring-2 focus-visible:ring-galaxy-gold"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-3 px-8 py-4 rounded-full bg-gradient-to-r from-galaxy-gold via-galaxy-amber to-amber-500 hover:from-yellow-300 hover:to-galaxy-amber text-galaxy-midnight font-bold text-base shadow-[0_0_30px_rgba(247,200,91,0.5)] hover:shadow-[0_0_45px_rgba(247,200,91,0.75)] hover:scale-105 active:scale-95 transition-all outline-none focus-visible:ring-2 focus-visible:ring-galaxy-gold cursor-pointer"
             >
               <Sparkles className="w-5 h-5" />
-              <span>Create Your Wish</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Create Your Cosmic Wish</span>
+              <ArrowRight className="w-4 h-4 ml-1" />
             </Link>
 
             {/* Secondary CTA */}
             <a
               href="#light-diya"
-              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-8 py-4 rounded-full bg-galaxy-royal/60 border border-galaxy-gold/30 text-galaxy-ivory hover:text-galaxy-gold hover:border-galaxy-gold/60 hover:bg-galaxy-royal/90 font-medium text-base backdrop-blur-md transition-all active:scale-95 outline-none focus-visible:ring-2 focus-visible:ring-galaxy-gold"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-8 py-4 rounded-full bg-galaxy-royal/70 border border-galaxy-gold/40 text-galaxy-ivory hover:text-galaxy-gold hover:border-galaxy-gold hover:bg-galaxy-royal/90 font-medium text-base backdrop-blur-md shadow-[0_0_20px_rgba(247,200,91,0.2)] hover:shadow-[0_0_30px_rgba(247,200,91,0.35)] transition-all active:scale-95 outline-none focus-visible:ring-2 focus-visible:ring-galaxy-gold cursor-pointer"
             >
-              <Flame className="w-5 h-5 text-galaxy-amber" />
+              <Flame className="w-5 h-5 text-galaxy-amber animate-pulse" />
               <span>Light a Diya</span>
             </a>
           </motion.div>
 
-          {/* Quick Festive Insight */}
+          {/* Quick Festive Insight Chips */}
           <motion.div
             variants={itemVariants}
-            className="mt-14 pt-6 border-t border-galaxy-gold/15 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs sm:text-sm text-galaxy-lavender/80"
+            className="mt-14 pt-6 border-t border-galaxy-gold/20 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-galaxy-lavender/90"
           >
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-galaxy-midnight/60 border border-galaxy-gold/25 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-galaxy-gold animate-pulse" />
-              <span>100% Free & Personalized</span>
+              <span className="font-medium text-galaxy-ivory">100% Free & Personalized</span>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-galaxy-midnight/60 border border-galaxy-gold/25 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-galaxy-amber animate-pulse" />
-              <span>Bengali, Hindi & Global Unicode</span>
+              <span className="font-medium text-galaxy-ivory">Bengali, Hindi & Global Unicode</span>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-galaxy-midnight/60 border border-galaxy-gold/25 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-galaxy-lavender animate-pulse" />
-              <span>PNG Greeting Card Download</span>
+              <span className="font-medium text-galaxy-ivory">PNG Greeting Card Download</span>
             </div>
           </motion.div>
         </motion.div>

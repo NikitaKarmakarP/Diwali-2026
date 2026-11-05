@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { WishCategory } from '../types/wish';
 import { Users, Heart, Smile, Coins, Trophy, Globe, Flame } from 'lucide-react';
 
@@ -29,10 +30,10 @@ export const WishCategorySelector: React.FC<WishCategorySelectorProps> = ({
 
   return (
     <div className="w-full">
-      <label className="block text-xs font-semibold uppercase tracking-wider text-galaxy-gold/90 mb-2.5">
-        Wish Category
+      <label className="block text-xs font-semibold uppercase tracking-wider text-galaxy-gold mb-2.5">
+        ✦ Select Wish Blessing Category ✦
       </label>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {categories.map((cat) => {
           const isSelected = selectedCategory === cat.value;
           return (
@@ -40,12 +41,19 @@ export const WishCategorySelector: React.FC<WishCategorySelectorProps> = ({
               key={cat.value}
               type="button"
               onClick={() => onSelectCategory(cat.value)}
-              className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all outline-none focus-visible:ring-2 focus-visible:ring-galaxy-gold ${
+              className={`relative flex items-center space-x-2 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 outline-none cursor-pointer ${
                 isSelected
-                  ? 'bg-gradient-to-r from-galaxy-gold via-galaxy-amber to-amber-500 text-galaxy-midnight shadow-[0_0_15px_rgba(247,200,91,0.4)] font-bold scale-105'
-                  : 'bg-galaxy-midnight/70 text-galaxy-ivory/80 border border-galaxy-gold/20 hover:border-galaxy-gold/50 hover:bg-galaxy-royal/60'
+                  ? 'text-galaxy-midnight font-bold shadow-lg scale-105'
+                  : 'glass-panel text-galaxy-ivory/80 hover:text-galaxy-gold hover:border-galaxy-gold/40'
               }`}
             >
+              {isSelected && (
+                <motion.div
+                  layoutId="activeWishCatPill"
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-r from-galaxy-gold via-galaxy-amber to-amber-500 shadow-[0_0_20px_rgba(247,200,91,0.45)] -z-10"
+                  transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                />
+              )}
               <span>{cat.icon}</span>
               <span>{cat.label}</span>
             </button>
