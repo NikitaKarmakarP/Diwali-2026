@@ -17,7 +17,7 @@ interface DeityCard {
 
 const resolveImageUrl = (url: string) => {
   if (url.includes('pinterest.com/pin/1089871178608889875')) {
-    return 'https://i.pinimg.com/736x/73/a0/4c/73a04c66e9762afc04ba504cc3641df9.jpg';
+    return 'https://i.pinimg.com/1200x/87/e2/a9/87e2a9190f985a7b3d72fb95b58e004f.jpg';
   }
   if (url.includes('pinterest.com/pin/1090997079024153565')) {
     return 'https://i.pinimg.com/736x/87/e2/a9/87e2a9190f985a7b3d72fb95b58e004f.jpg';
@@ -32,7 +32,7 @@ const DEITIES_DATA: DeityCard[] = [
     title: 'Goddess of Wealth, Fortune & Purity',
     sanskritMantra: 'ॐ महालक्ष्म्यै च विद्महे विष्णुपत्नी च धीमहि तन्नो लक्ष्मीः प्रचोदयात्॥',
     category: 'Lakshmi',
-    image: 'https://images.unsplash.com/photo-1634586616173-ec6b4b41bcfd?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://i.pinimg.com/736x/27/49/53/274953580e86442d6f78e9f90a8bdeaf.jpg',
     fallbackGradient: 'from-amber-600 via-yellow-500 to-amber-700',
     blessing: 'May Goddess Lakshmi bestow boundless abundance, auspicious fortune, and golden light upon your home.',
   },
@@ -42,7 +42,7 @@ const DEITIES_DATA: DeityCard[] = [
     title: 'Vighnaharta — The Lord of Beginnings & Wisdom',
     sanskritMantra: 'ॐ गं गणपतये नमः ✦ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ॥',
     category: 'Ganesh',
-    image: 'https://images.unsplash.com/photo-1567591370504-8b6255ef88fb?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://i.pinimg.com/1200x/46/dc/c4/46dcc49cb86a65a42b7eb4fbb46872ea.jpg',
     fallbackGradient: 'from-orange-600 via-amber-500 to-yellow-600',
     blessing: 'May Lord Ganesha remove every obstacle from your path and bless you with intellect, peace, and triumph.',
   },
@@ -52,7 +52,7 @@ const DEITIES_DATA: DeityCard[] = [
     title: 'The Supreme Mother & Annihilator of Darkness',
     sanskritMantra: 'ॐ क्रीं कालिकायै नमः ✦ सर्वमङ्गलमङ्गल्ये शिवे सर्वार्थसाधिके॥',
     category: 'Kali',
-    image: 'https://i.pinimg.com/736x/73/a0/4c/73a04c66e9762afc04ba504cc3641df9.jpg',
+    image: 'https://i.pinimg.com/1200x/87/e2/a9/87e2a9190f985a7b3d72fb95b58e004f.jpg',
     fallbackGradient: 'from-purple-900 via-indigo-900 to-slate-900',
     blessing: 'May Maa Kali shield you from all fear, destroy ignorance, and awaken profound divine courage in your heart.',
   },
@@ -62,7 +62,7 @@ const DEITIES_DATA: DeityCard[] = [
     title: 'Loving Mother & Liberator of the Cosmos',
     sanskritMantra: 'नमो देव्यै महादेव्यै शिवायै सततं नमः॥',
     category: 'Kali',
-    image: 'https://in.pinterest.com/pin/1089871178608889875/',
+    image: 'https://i.pinimg.com/736x/73/a0/4c/73a04c66e9762afc04ba504cc3641df9.jpg',
     fallbackGradient: 'from-blue-950 via-indigo-900 to-purple-900',
     blessing: 'May the compassionate gaze of Mother Bhavatarini illuminate every dark night and guide you toward eternal peace.',
   },
@@ -72,7 +72,7 @@ const DEITIES_DATA: DeityCard[] = [
     title: 'Sacred Deepavali Joint Divine Blessing',
     sanskritMantra: 'शुभं करोति कल्याणम् आरोग्यम् धनसंपदा॥',
     category: 'Lakshmi',
-    image: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://i.pinimg.com/736x/d1/e2/e0/d1e2e0bcac5ec0fbdfb4e50cd752ef74.jpg',
     fallbackGradient: 'from-amber-500 via-yellow-600 to-red-600',
     blessing: 'May the sacred union of Wisdom and Prosperity grant harmony, righteousness, and auspicious joy to your family.',
   },
@@ -82,7 +82,7 @@ const DEITIES_DATA: DeityCard[] = [
     title: 'Eternal Light Behind the Cosmic Void',
     sanskritMantra: 'ॐ जयन्ती मङ्गला काली भद्रकाली कपालिनी। दुर्गा क्षमा शिवा धात्री स्वाहा स्वधा नमोऽस्तु ते॥',
     category: 'Kali',
-    image: 'https://in.pinterest.com/pin/1090997079024153565/',
+    image: 'https://i.pinimg.com/736x/8f/67/70/8f67700d44d317351ab6a3dc2f2bc46b.jpg',
     fallbackGradient: 'from-slate-950 via-purple-950 to-indigo-950',
     blessing: 'May the eternal Shakti empower your spirit to overcome every trial with unwavering serenity and righteous power.',
   },
