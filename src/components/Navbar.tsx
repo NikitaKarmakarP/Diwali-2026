@@ -16,6 +16,7 @@ import {
   Moon,
   Wind,
   Sun,
+  Gift,
   Radio,
 } from 'lucide-react';
 import { soundEngine, SoundscapeType } from '../utils/soundEffects';
@@ -39,6 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isMuted, onToggleMute }) => {
     { name: 'Light Diya', path: '/#light-diya', icon: <Flame className="w-4 h-4" /> },
     { name: 'Lanterns', path: '/#sky-lanterns', icon: <Wind className="w-4 h-4" /> },
     { name: 'Rangoli', path: '/#cosmic-rangoli', icon: <Moon className="w-4 h-4" /> },
+    { name: 'Sweets', path: '/#diwali-sweets', icon: <Gift className="w-4 h-4" /> },
     { name: '5 Days', path: '/#five-days', icon: <Sun className="w-4 h-4" /> },
     { name: 'Wish Wall', path: '/#community-wall', icon: <Globe className="w-4 h-4" /> },
     { name: 'About', path: '/about', icon: <Heart className="w-4 h-4" /> },
@@ -180,14 +182,14 @@ export const Navbar: React.FC<NavbarProps> = ({ isMuted, onToggleMute }) => {
           </Link>
 
           {/* ── Desktop Navigation Links with Animated Glow Pills ── */}
-          <nav className="hidden lg:flex items-center space-x-1.5" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center space-x-1" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const active = isActive(link.path);
               return (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="relative px-3.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all outline-none focus-visible:ring-2 focus-visible:ring-galaxy-gold group"
+                  className="relative px-3 py-2 rounded-full text-xs font-semibold tracking-wide transition-all outline-none focus-visible:ring-2 focus-visible:ring-galaxy-gold group"
                 >
                   {/* Active/Hover Background Pill */}
                   {active ? (
