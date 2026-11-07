@@ -174,7 +174,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'शान्तिः पुष्टिस्तुष्टिश्च — Peace, vitality, and deep satisfaction.',
     ingredients: ['Slow-Caramelized Khoya', 'Cardamom Powder', 'Crushed Pistachios', 'Cane Boora'],
     emoji: '🟤',
-    image: 'https://images.unsplash.com/photo-1599307767316-776533da872a?auto=format&fit=crop&w=800&q=80',
+    image: 'https://i.pinimg.com/736x/b1/93/15/b1931595ca10149d46e49baf85a977d9.jpg',
     badge: '🙏 Temple Heritage',
     color: '#A0522D',
     accentGradient: 'from-amber-600 via-yellow-700 to-amber-900 text-amber-50',
