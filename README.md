@@ -111,6 +111,4 @@ Output generated in `dist/`.
 
 ## 📜 License
 Created with devotion for Diwali celebrations. Free to use and share across the universe. Shubh Deepavali!
-=======
-# Diwali-2026
->>>>>>> 3d8ce591850397a65d577f4507cd4b92ab18bb09
+
