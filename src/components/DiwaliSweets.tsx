@@ -66,7 +66,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'मोदकप्रियाय नमः — Salutations to the Lord who loves sweet Modakas.',
     ingredients: ['Micro Gram Flour Pearls', 'Pure Desi Ghee', 'Kashmiri Saffron', 'Melon Seeds'],
     emoji: '🟡',
-    image: 'https://images.pexels.com/photos/18867375/pexels-photo-18867375.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://i.pinimg.com/736x/77/23/7a/77237ab834becf3fc6f72bc58e87f672.jpg',
     badge: '🪔 Puja Special',
     color: '#FFA439',
     accentGradient: 'from-amber-400 via-orange-500 to-amber-600 text-slate-950',
