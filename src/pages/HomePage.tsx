@@ -5,6 +5,7 @@ import { WishForm } from '../components/WishForm';
 import { DiyaGarden } from '../components/DiyaGarden';
 import { SkyLanternSanctuary } from '../components/SkyLanternSanctuary';
 import { CosmicRangoli } from '../components/CosmicRangoli';
+import { DiwaliSweets } from '../components/DiwaliSweets';
 import { PatakaSimulator } from '../components/PatakaSimulator';
 import { DiwaliFiveDays } from '../components/DiwaliFiveDays';
 import { NikitaSpecialGreeting } from '../components/NikitaSpecialGreeting';
@@ -38,6 +39,9 @@ export const HomePage: React.FC = () => {
 
       {/* 6. Interactive Cosmic Rangoli Creator */}
       <CosmicRangoli />
+
+      {/* Sacred Diwali Mithai Thal (Diwali Sweets) */}
+      <DiwaliSweets />
 
       {/* 7. The 5 Sacred Days of Diwali Guide */}
       <DiwaliFiveDays />
