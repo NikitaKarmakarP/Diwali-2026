@@ -13,6 +13,7 @@ import {
   Star,
   Award,
   ChevronRight,
+  Eye,
 } from 'lucide-react';
 import { soundEngine } from '../utils/soundEffects';
 
@@ -27,6 +28,7 @@ interface SweetItem {
   sanskritVerse: string;
   ingredients: string[];
   emoji: string;
+  image: string;
   badge: string;
   color: string;
   accentGradient: string;
@@ -46,6 +48,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'मधुरेण समापयेत् — May every journey end in divine sweetness.',
     ingredients: ['Goan Cashews', 'Edible Silver Varq', 'Green Cardamom', 'Organic Cane Sugar'],
     emoji: '💎',
+    image: 'https://images.unsplash.com/photo-1667185487460-b303881b2bb9?auto=format&fit=crop&w=800&q=80',
     badge: '👑 Royal Favorite',
     color: '#E2E8F0',
     accentGradient: 'from-slate-100 via-amber-100 to-amber-200 text-slate-900',
@@ -63,6 +66,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'मोदकप्रियाय नमः — Salutations to the Lord who loves sweet Modakas.',
     ingredients: ['Micro Gram Flour Pearls', 'Pure Desi Ghee', 'Kashmiri Saffron', 'Melon Seeds'],
     emoji: '🟡',
+    image: 'https://images.pexels.com/photos/18867375/pexels-photo-18867375.jpeg?auto=compress&cs=tinysrgb&w=800',
     badge: '🪔 Puja Special',
     color: '#FFA439',
     accentGradient: 'from-amber-400 via-orange-500 to-amber-600 text-slate-950',
@@ -80,6 +84,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'आनन्दो ब्रह्मेति व्यजानात् — Realize that ultimate Joy is divine.',
     ingredients: ['Reduced Milk Mawa', 'Rosewater Nectar', 'Kewra Essence', 'Pistachio Flakes'],
     emoji: '🍯',
+    image: 'https://images.unsplash.com/photo-1666190092159-3171cf0fbb12?auto=format&fit=crop&w=800&q=80',
     badge: '🌹 Velvet Nectar',
     color: '#8C4A14',
     accentGradient: 'from-amber-700 via-rose-800 to-red-950 text-amber-100',
@@ -97,6 +102,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'शुद्धं शान्तं सुकोमलम् — Pure, tranquil, and tender.',
     ingredients: ['Fresh Cow Chenna', 'Crystalline Light Syrup', 'Crushed Green Cardamom'],
     emoji: '⚪',
+    image: 'https://images.unsplash.com/photo-1714799263412-2e0c1f875959?auto=format&fit=crop&w=800&q=80',
     badge: '☁️ Cloud Pure',
     color: '#FFF1D0',
     accentGradient: 'from-amber-50 via-yellow-100 to-orange-100 text-slate-900',
@@ -114,6 +120,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'कुण्डलीकृत्य मधुरम् — Joy coiled in golden concentric rings.',
     ingredients: ['Fermented Wheat Batter', 'Saffron Strands', 'Cardamom Dew', 'Pure Desi Ghee'],
     emoji: '🌀',
+    image: 'https://images.unsplash.com/photo-1778448806371-b55a71bf9a35?auto=format&fit=crop&w=800&q=80',
     badge: '🔥 Fresh & Crisp',
     color: '#FF6B00',
     accentGradient: 'from-orange-500 via-amber-500 to-yellow-400 text-slate-950',
@@ -131,6 +138,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'पुष्टिवर्धनम् — The nourisher of vital energy and joy.',
     ingredients: ['Coarse Chickpea Flour', 'Bilona Cow Ghee', 'Boora Sugar', 'Nutmeg & Pistachios'],
     emoji: '🍪',
+    image: 'https://images.pexels.com/photos/34153204/pexels-photo-34153204/free-photo-of-delicious-coconut-ladoo-in-coconut-shells.jpeg?auto=compress&cs=tinysrgb&w=800',
     badge: '🧈 Pure Cow Ghee',
     color: '#D49228',
     accentGradient: 'from-yellow-500 via-amber-500 to-yellow-600 text-slate-950',
@@ -148,6 +156,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'चन्द्रवत् वर्धमानम् — Growing like the auspicious moon.',
     ingredients: ['Crisp Flour Crust', 'Roasted Khoya', 'Grated Dry Coconut', 'Chironji & Almonds'],
     emoji: '🥟',
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
     badge: '🌙 Crescent Moon',
     color: '#F7C85B',
     accentGradient: 'from-amber-300 via-yellow-400 to-amber-500 text-slate-950',
@@ -165,6 +174,7 @@ const SWEETS_DATA: SweetItem[] = [
     sanskritVerse: 'शान्तिः पुष्टिस्तुष्टिश्च — Peace, vitality, and deep satisfaction.',
     ingredients: ['Slow-Caramelized Khoya', 'Cardamom Powder', 'Crushed Pistachios', 'Cane Boora'],
     emoji: '🟤',
+    image: 'https://images.unsplash.com/photo-1599307767316-776533da872a?auto=format&fit=crop&w=800&q=80',
     badge: '🙏 Temple Heritage',
     color: '#A0522D',
     accentGradient: 'from-amber-600 via-yellow-700 to-amber-900 text-amber-50',
@@ -351,7 +361,7 @@ export const DiwaliSweets: React.FC = () => {
 
             {/* Right: Selected Sweet Emojis & Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
-              <div className="flex items-center space-x-1.5 p-2 rounded-2xl bg-galaxy-midnight/80 border border-galaxy-gold/30 min-h-[48px] max-w-full overflow-x-auto custom-scrollbar">
+              <div className="flex items-center space-x-2 p-2 rounded-2xl bg-galaxy-midnight/80 border border-galaxy-gold/30 min-h-[56px] max-w-full overflow-x-auto custom-scrollbar">
                 {mithaiThal.length === 0 ? (
                   <span className="text-xs text-galaxy-lavender/60 px-3">Thali is awaiting sweets...</span>
                 ) : (
@@ -365,10 +375,16 @@ export const DiwaliSweets: React.FC = () => {
                         whileTap={{ scale: 0.9 }}
                         type="button"
                         onClick={() => setSelectedSweet(item)}
-                        className="w-10 h-10 rounded-xl bg-galaxy-royal/60 border border-galaxy-gold/40 flex items-center justify-center text-lg hover:border-galaxy-gold transition-all cursor-pointer shadow-sm"
+                        className="relative w-12 h-12 rounded-xl overflow-hidden border border-galaxy-gold/50 flex items-center justify-center hover:border-galaxy-gold transition-all cursor-pointer shadow-md group"
                         title={`${item.name} (Click for details)`}
                       >
-                        {item.emoji}
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                       </motion.button>
                     );
                   })
@@ -382,7 +398,7 @@ export const DiwaliSweets: React.FC = () => {
                   type="button"
                   onClick={handleOfferThalToAll}
                   disabled={mithaiThal.length === 0}
-                  className={`px-5 py-3 rounded-2xl font-bold text-xs sm:text-sm flex items-center space-x-2 shadow-md transition-all cursor-pointer ${
+                  className={`px-5 py-3.5 rounded-2xl font-bold text-xs sm:text-sm flex items-center space-x-2 shadow-md transition-all cursor-pointer ${
                     mithaiThal.length > 0
                       ? 'bg-gradient-to-r from-galaxy-gold via-galaxy-amber to-amber-500 text-galaxy-midnight shadow-[0_0_20px_rgba(247,200,91,0.4)] hover:shadow-[0_0_30px_rgba(247,200,91,0.6)]'
                       : 'bg-galaxy-midnight text-galaxy-lavender/50 border border-white/10 cursor-not-allowed'
@@ -396,7 +412,7 @@ export const DiwaliSweets: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleResetThal}
-                    className="p-3 rounded-2xl bg-white/5 hover:bg-white/10 text-galaxy-lavender hover:text-galaxy-ivory border border-white/15 transition-all"
+                    className="p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 text-galaxy-lavender hover:text-galaxy-ivory border border-white/15 transition-all"
                     title="Reset Mithai Thal"
                   >
                     <RotateCcw className="w-4 h-4" />
@@ -433,7 +449,7 @@ export const DiwaliSweets: React.FC = () => {
           })}
         </div>
 
-        {/* ── Mithai Cards Grid ── */}
+        {/* ── Mithai Cards Grid with Authentic Photos ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredSweets.map((sweet, index) => {
             const isInThal = mithaiThal.includes(sweet.id);
@@ -447,24 +463,41 @@ export const DiwaliSweets: React.FC = () => {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 onClick={() => setSelectedSweet(sweet)}
-                className={`glass-panel-gold rounded-3xl p-6 border-2 ${sweet.borderColor} shadow-[0_15px_40px_rgba(0,0,0,0.55)] flex flex-col justify-between cursor-pointer group relative overflow-hidden transition-all duration-300`}
+                className={`glass-panel-gold rounded-3xl p-5 border-2 ${sweet.borderColor} shadow-[0_15px_40px_rgba(0,0,0,0.55)] flex flex-col justify-between cursor-pointer group relative overflow-hidden transition-all duration-300`}
               >
                 {/* Background Ambient Glow on Hover */}
                 <div className="absolute top-0 right-0 w-36 h-36 bg-galaxy-gold/10 rounded-full filter blur-2xl group-hover:bg-galaxy-gold/25 transition-all pointer-events-none" />
 
                 <div>
-                  {/* Top Badge & Category */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-galaxy-gold px-2.5 py-1 rounded-full bg-galaxy-midnight/90 border border-galaxy-gold/30">
-                      {sweet.badge}
-                    </span>
-                    <span className="text-2xl transition-transform group-hover:scale-125 duration-300">
+                  {/* Photo Container with Rounded Frame & Badge */}
+                  <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-4 border border-galaxy-gold/30 shadow-md">
+                    <img
+                      src={sweet.image}
+                      alt={sweet.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                      onError={(e) => {
+                        // Fallback in case of network glitch
+                        (e.target as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-galaxy-midnight via-transparent to-black/20" />
+
+                    {/* Top Floating Badge */}
+                    <div className="absolute top-2.5 left-2.5">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-galaxy-gold px-2.5 py-1 rounded-full bg-galaxy-midnight/90 border border-galaxy-gold/40 shadow-sm backdrop-blur-md">
+                        {sweet.badge}
+                      </span>
+                    </div>
+
+                    {/* Emoji watermark */}
+                    <div className="absolute bottom-2 right-2.5 text-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                       {sweet.emoji}
-                    </span>
+                    </div>
                   </div>
 
                   {/* Sweet Title & Vernacular Names */}
-                  <div className="mb-3">
+                  <div className="mb-2.5">
                     <h3 className="font-serif font-black text-xl text-galaxy-ivory group-hover:text-galaxy-gold transition-colors">
                       {sweet.name}
                     </h3>
@@ -476,17 +509,17 @@ export const DiwaliSweets: React.FC = () => {
                   </div>
 
                   {/* Tagline */}
-                  <p className="text-xs text-galaxy-ivory/80 font-sans leading-relaxed line-clamp-2 mb-4">
+                  <p className="text-xs text-galaxy-ivory/80 font-sans leading-relaxed line-clamp-2 mb-3">
                     {sweet.tagline}
                   </p>
 
                   {/* Sacred Blessing Pill */}
-                  <div className="p-3 rounded-2xl bg-galaxy-midnight/80 border border-galaxy-gold/20 mb-4 text-[11px] text-galaxy-ivory/90 italic font-serif leading-snug">
+                  <div className="p-3 rounded-2xl bg-galaxy-midnight/80 border border-galaxy-gold/20 mb-3 text-[11px] text-galaxy-ivory/90 italic font-serif leading-snug">
                     "{sweet.blessing}"
                   </div>
 
                   {/* Key Ingredients */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {sweet.ingredients.slice(0, 3).map((ing) => (
                       <span
                         key={ing}
@@ -537,7 +570,7 @@ export const DiwaliSweets: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Sweet Lore & Blessing Modal ── */}
+      {/* ── Sweet Lore & Blessing Modal with Large Image ── */}
       <AnimatePresence>
         {selectedSweet && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
@@ -546,30 +579,42 @@ export const DiwaliSweets: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full max-w-xl glass-panel-gold rounded-3xl p-6 sm:p-8 border-2 border-galaxy-gold/50 shadow-2xl overflow-hidden"
+              className="relative w-full max-w-xl glass-panel-gold rounded-3xl p-6 sm:p-8 border-2 border-galaxy-gold/50 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto custom-scrollbar"
             >
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setSelectedSweet(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-galaxy-midnight/80 text-galaxy-ivory hover:text-galaxy-gold border border-galaxy-gold/30 transition-all cursor-pointer"
+                className="absolute top-4 right-4 p-2 rounded-full bg-galaxy-midnight/80 text-galaxy-ivory hover:text-galaxy-gold border border-galaxy-gold/30 transition-all cursor-pointer z-10"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Modal Content */}
-              <div className="flex items-center space-x-3 mb-4">
-                <span className="text-4xl p-2 rounded-2xl bg-galaxy-midnight/80 border border-galaxy-gold/30">
-                  {selectedSweet.emoji}
-                </span>
-                <div>
-                  <h3 className="font-serif font-black text-2xl text-galaxy-ivory">
-                    {selectedSweet.name}
-                  </h3>
-                  <p className="text-xs font-mono text-galaxy-gold font-bold">
-                    {selectedSweet.hindi} ✦ {selectedSweet.bengali}
-                  </p>
+              {/* Large Image Showcase in Modal */}
+              <div className="relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden mb-5 border border-galaxy-gold/40 shadow-lg">
+                <img
+                  src={selectedSweet.image}
+                  alt={selectedSweet.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-galaxy-midnight via-transparent to-black/30" />
+
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-galaxy-gold px-3 py-1 rounded-full bg-galaxy-midnight/90 border border-galaxy-gold/40">
+                    {selectedSweet.badge}
+                  </span>
+                  <span className="text-3xl drop-shadow-md">{selectedSweet.emoji}</span>
                 </div>
+              </div>
+
+              {/* Title & Vernacular */}
+              <div className="mb-4">
+                <h3 className="font-serif font-black text-2xl sm:text-3xl text-galaxy-ivory">
+                  {selectedSweet.name}
+                </h3>
+                <p className="text-xs sm:text-sm font-mono text-galaxy-gold font-bold mt-0.5">
+                  {selectedSweet.hindi} ✦ {selectedSweet.bengali}
+                </p>
               </div>
 
               {/* Sanskrit Shloka Badge */}
